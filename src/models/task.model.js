@@ -10,11 +10,15 @@ const taskschema = new mongoose.Schema({
         type:mongoose.Schema.Types.String
     },
     completed:{
-        type:mongoose.Schema.Types.Boolean
+        type:mongoose.Schema.Types.Boolean,
+        default:false
     },
     reminded:{
         type:mongoose.Schema.Types.Boolean,
         default:false
+    },
+    remindAt:{
+        type:mongoose.Schema.Types.Date
     },
     createdAt:{
         type:mongoose.Schema.Types.Date,

@@ -4,7 +4,11 @@ import { User } from "../models/user.model.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
-import getVoiceUrl from "../voiceService/animevoice.js";
+import getVoiceUrl from "../services/animevoice.js";
+import { Task } from "../models/task.model.js";
+import { parseDate } from "chrono-node";
+import nlp from "compromise";
+import { wakeupResponses , crudResponses} from "../utills/responses.js";
 
 
 dotenv.config()
@@ -35,7 +39,6 @@ export const generateRefreshToken = async (user) => {
 function get_random(arr) {
     return arr[Math.floor((Math.random() * arr.length))];
 }
-
 
 
 export const register = asynchandler(async (req, res) => {
@@ -120,47 +123,192 @@ export const updateprofile = asynchandler(async (req, res) => {
     })
 })
 
+// manual part 
 
+export const addTask = asynchandler(async(req,res)=>{
+    const { task } = req.body
+    const userId = req.user.id
+    if (!task) throw new ApiError(400, 'Plz fill all field')
+
+    const time = parseDate(text)
+    if (time) {
+        humandate = new Date(time).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', hour12: true })
+    }
+    const newtask = await Task.create({
+        userId:userId,
+        title:task.toLowerCase(),
+        remindAt:time ?? null
+    })
+
+    return res.status(200).json({
+        message:'Task add successfully',
+        newtask
+    })
+})
+
+export const getUserAllTask = asynchandler(async(req,res)=>{
+    const userId = req.user.id
+
+    const allTasks = await Task.find({userId:userId}).sort({createdAt:-1})
+    return res.status(200).json({
+        message:'Fetch all tasks successfully',
+        allTasks
+    })
+})
+
+export const getTaskById = asynchandler(async(req,res)=>{
+    const {taskId} = req.params
+    if(!taskId) throw new ApiError(400,'Task id is required field')
+
+    const task = await Task.findById(taskId)
+    if(!task) throw new ApiError(404,'Task not found')
+
+    return res.status(200).json({
+        message:'Fetch task successfully',
+        task
+    })
+})
+
+export const updateStatus = asynchandler(async(req,res)=>{
+    const {taskId} = req.params
+    if(!taskId) throw new ApiError(400,'Task id must required')
+
+    const task = await Task.findById(taskId)
+    if(!task) throw new ApiError(404,'Task not found')
+    
+    const updatedTask = await Task.updateOne(task.id,{completed:true,reminded:true})
+    return res.status(200).json({
+        message:'Task update successfully',
+        updatedTask
+    })
+})
+
+export const deleteManyTasks = asynchandler(async(req,res)=>{
+    const {taskIds} = req.body
+    if(taskIds.length==0) throw new ApiError(400,'Plz select single id') 
+
+    const tasks = await Task.find({_id:{$in:taskIds}})
+    if(taskIds.length !== tasks.length) throw new ApiError(404,'Some tasks not found')
+
+    await Task.deleteMany({_id:{$in:taskIds}})
+    return res.status(200).json({
+        message:'Delete tasks successfully'
+    })
+})
+
+
+// assistant part 
 export const wakeUpAssistant = asynchandler(async (req, res) => {
     const { text } = req.body
 
-    const responses = {
-        oknaruto: {
-            texts: [
-                "Yosh! I'm Naruto Uzumaki, and I never go back on my word. Ready to tackle your tasks, believe it!",
-                "Hey! Let’s crush today’s to-dos with some real ninja energy!",
-                "Shadow Clone or not, I’ll make sure your tasks get done – Dattebayo!",
-                "Time to become the Hokage of productivity! Let’s go!"
-            ],
-            id: process.env.NARUTO_VOICE_ID
-        },
-        okhinata: {
-            texts: [
-                "H-hello... I’m here to help you with your tasks… Let’s do our best today!",
-                "You’re doing great. I believe in you… L-let’s get things done, together.",
-                "Uhm… I organized your task list. Please check it when you’re ready.",
-                "Even small steps matter… I’ll assist you quietly, okay?"
-            ],
-            id: process.env.HINATA_VOICE_ID
-        },
-        okjiraiya: {
-            texts: [
-                "Ahh, my pupil! The great Jiraiya is here to help you conquer your tasks—while maybe writing a new novel too!",
-                "You can’t train like a ninja with unfinished tasks, kid. Let’s get them done!",
-                "Even the Legendary Sannin had to handle chores... let’s do yours with style!",
-                "Finish your to-dos now, then reward yourself with some ramen… or research, hehe."
-            ],
-            id: process.env.JIRAIYA_VOICE_ID
-        }
-    };
-
     const key = text.toLowerCase();
 
-    if (!responses[key]) throw new ApiError(400, 'Plz speak valid wakeup word');
+    if (!wakeupResponses[key]) throw new ApiError(400, 'Plz speak valid wakeup word');
 
-    const chosen = get_random(responses[key].texts);
-    const voiceBuffer = await getVoiceUrl(chosen, responses[key].id);
+    const chosen = get_random(wakeupResponses[key].texts);
+    const voiceBuffer = await getVoiceUrl(chosen, wakeupResponses[key].id);
 
     return res.status(200).setHeader('Content-Type', 'audio/mpeg').send(voiceBuffer);
 
+})
+
+export const crudOfTask = asynchandler(async(req,res)=>{
+    const {task,voiceId} = req.body
+    const userId = req.user.id
+
+    if([task,voiceId].some((field)=>field.trim()==='')) throw new ApiError(400,'Plz fill all field')
+
+    const index = Math.floor((Math.random() * 2))
+    const now = new Date()
+    const date = now.getDate()
+    const month = now.getMonth()
+    const year = now.getFullYear()
+
+    const yesterdayTask = await Task.find({userId:userId,completed:false,createdAt:{$gt: new Date(year,month,date-1),$lte:new Date(year,month,date)}})
+    if(yesterdayTask.length > 0) {
+        const charaterResponse = crudResponses.old[voiceId][index]
+        const voiceBuffer = await getVoiceUrl(charaterResponse,voiceId)
+        return res.status(200).json({
+            message:'Yesterday pending tasks',
+            voiceBuffer
+        })
+        // return res.status(200).setHeader('Content-Type', 'audio/mpeg').send(voiceBuffer);
+    }
+
+    function remove(keyword){
+        return task.toLowerCase().replace(keyword.toLowerCase(), "")
+    }
+
+    if(task.toLowerCase().includes('add task')){
+        let humandate
+        const text = remove('add task')
+        const doc = nlp(text)
+        const verb = doc.verbs().out('text');
+        const noun = doc.nouns().first().out('text');
+        const tasktitle = `${verb} ${noun}`.replace(',','and');
+        const time = parseDate(text)
+        if(time){
+            humandate  = new Date(time).toLocaleString('en-IN',{timeZone:'Asia/Kolkata',hour12:true})
+        }
+        const newtask = await Task.create({
+            userId:userId,
+            title:tasktitle.toLowerCase(),
+            remindAt:time ?? null
+        })
+        const charaterResponse = crudResponses.add[voiceId][index](tasktitle)
+        const voiceBuffer = await getVoiceUrl(charaterResponse,voiceId)
+        return res.status(200).json({
+            message:'Add task successfully',
+            newtask,
+            humandate:time?humandate:null,
+            voiceBuffer
+        })
+        // return res.status(200).setHeader('Content-Type', 'audio/mpeg').send(voiceBuffer);
+    }
+    else if(task.toLowerCase().includes('my pending tasks')){
+        const tasks = await Task.find({userId:userId,completed:false,createdAt:{$gt:new Date(year,month,date),$lte:new Date(year,month,date+1)}})
+        const titles = tasks.map((t)=>t.title)
+        const list = []
+        for(let i=0;i<titles.length;i++){
+            list[i] = `${i+1} is ${titles[i]}`
+        }
+        const charaterResponse = crudResponses.mytasks[voiceId][index](list)
+        const voiceBuffer = await getVoiceUrl(charaterResponse,voiceId)
+        return res.status(200).json({
+            message:'Fetch all current tasks successfully',
+            list,
+            voiceBuffer
+        })
+        // return res.status(200).setHeader('Content-Type','audio/mpeg').send(voiceBuffer)
+    }
+    else if(task.toLowerCase().includes('delete this')){
+        const text = remove('delete this').toLowerCase()
+        const oldtask = await Task.findOne({title:{$regex:text.trim(),$options:'i'}})
+        if(!oldtask){
+            const voiceBuffer = await getVoiceUrl(`Oops! i can't find your task.... so speck exact task title.`,voiceId)
+            return res.status(400).json({
+                message:'Failed to find task',
+                voiceBuffer
+            })
+            // return res.status(200).setHeader('Content-Type','audio/mpeg').send(voiceBuffer)
+        }
+        await Task.deleteOne({_id:oldtask.id})
+        const charaterResponse = crudResponses.delete[voiceId][index](oldtask.title)
+        const voiceBuffer = await getVoiceUrl(charaterResponse,voiceId)
+        return res.status(200).json({
+            message:'Delete your task successfully',
+            title:oldtask.title,
+            voiceBuffer
+        })
+        // return res.status(200).setHeader('Content-Type','audio/mpeg').send(voiceBuffer)
+    }
+    else{
+        const charaterResponse = crudResponses.other[voiceId][index]
+        const voiceBuffer = await getVoiceUrl(charaterResponse,voiceId)
+        return res.status(200).json({
+            message:'Oops! wrong starting word',
+            voiceBuffer
+        })
+        // return res.status(200).setHeader('Content-Type','audio/mpeg').send(voiceBuffer)
+    }
 })
