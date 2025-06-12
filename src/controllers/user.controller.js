@@ -9,6 +9,7 @@ import { Task } from "../models/task.model.js";
 import { parseDate } from "chrono-node";
 import nlp from "compromise";
 import { wakeupResponses , crudResponses} from "../utills/responses.js";
+import { scheduleReminder } from "../services/reminder.js";
 
 
 dotenv.config()
@@ -130,18 +131,20 @@ export const addTask = asynchandler(async(req,res)=>{
     const userId = req.user.id
     if (!task) throw new ApiError(400, 'Plz fill all field')
 
-    const time = parseDate(text)
-    if (time) {
-        humandate = new Date(time).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', hour12: true })
-    }
+    let humandate
+    const time = parseDate(task)
     const newtask = await Task.create({
         userId:userId,
         title:task.toLowerCase(),
         remindAt:time ?? null
     })
-
+    if (time) {
+        humandate = new Date(time).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', hour12: true })
+        scheduleReminder(newtask.id,task,time)
+    }
     return res.status(200).json({
         message:'Task add successfully',
+        humandate,
         newtask
     })
 })
@@ -175,22 +178,27 @@ export const updateStatus = asynchandler(async(req,res)=>{
 
     const task = await Task.findById(taskId)
     if(!task) throw new ApiError(404,'Task not found')
+
+    task.completed = true
+    task.reminded = true
     
-    const updatedTask = await Task.updateOne(task.id,{completed:true,reminded:true})
+    await task.save()
     return res.status(200).json({
         message:'Task update successfully',
-        updatedTask
+        task
     })
 })
 
-export const deleteManyTasks = asynchandler(async(req,res)=>{
-    const {taskIds} = req.body
-    if(taskIds.length==0) throw new ApiError(400,'Plz select single id') 
+export const deleteTask = asynchandler(async(req,res)=>{
+    const {taskId} = req.params
+    if(!taskId) throw new ApiError(400,'Task id must required') 
 
-    const tasks = await Task.find({_id:{$in:taskIds}})
-    if(taskIds.length !== tasks.length) throw new ApiError(404,'Some tasks not found')
+    const task = await Task.findById(taskId)
+    if(!task) throw new ApiError(404,'Task not found')
 
-    await Task.deleteMany({_id:{$in:taskIds}})
+    if(task.completed==false) throw new ApiError(400,'Plz first complete a task')
+
+    await Task.deleteMany({_id:task._id})
     return res.status(200).json({
         message:'Delete tasks successfully'
     })
@@ -247,9 +255,6 @@ export const crudOfTask = asynchandler(async(req,res)=>{
         const noun = doc.nouns().first().out('text');
         const tasktitle = `${verb} ${noun}`.replace(',','and');
         const time = parseDate(text)
-        if(time){
-            humandate  = new Date(time).toLocaleString('en-IN',{timeZone:'Asia/Kolkata',hour12:true})
-        }
         const newtask = await Task.create({
             userId:userId,
             title:tasktitle.toLowerCase(),
@@ -257,6 +262,10 @@ export const crudOfTask = asynchandler(async(req,res)=>{
         })
         const charaterResponse = crudResponses.add[voiceId][index](tasktitle)
         const voiceBuffer = await getVoiceUrl(charaterResponse,voiceId)
+        if(time){
+            humandate  = new Date(time).toLocaleString('en-IN',{timeZone:'Asia/Kolkata',hour12:true})
+            scheduleReminder(newtask.id,tasktitle,time)
+        }
         return res.status(200).json({
             message:'Add task successfully',
             newtask,
