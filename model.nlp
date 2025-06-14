@@ -1,0 +1,2949 @@
+{
+  "settings": {
+    "languages": [
+      "en",
+      "gu"
+    ],
+    "forceNER": true,
+    "nlu": {
+      "useNoneFeature": false,
+      "log": false
+    },
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "executeActionsBeforeAnswers": false,
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager",
+      "useNoneFeature": false,
+      "log": false
+    },
+    "locales": [
+      "en",
+      "gu"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "useNoneFeature": false,
+          "trainByDomain": false,
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "hello": {
+            "intent": "greetings.hi",
+            "domain": "default"
+          },
+          "hi": {
+            "intent": "greetings.hi",
+            "domain": "default"
+          },
+          "yo": {
+            "intent": "greetings.hi",
+            "domain": "default"
+          },
+          "hey": {
+            "intent": "greetings.hi",
+            "domain": "default"
+          },
+          "hey,there": {
+            "intent": "greetings.hi",
+            "domain": "default"
+          },
+          "hi,there": {
+            "intent": "greetings.hi",
+            "domain": "default"
+          },
+          "up,what’": {
+            "intent": "greetings.hi",
+            "domain": "default"
+          },
+          "hello,there": {
+            "intent": "greetings.hi",
+            "domain": "default"
+          },
+          "namast": {
+            "intent": "greetings.hi",
+            "domain": "default"
+          },
+          "good,morn": {
+            "intent": "greetings.hi",
+            "domain": "default"
+          },
+          "afternoon,good": {
+            "intent": "greetings.hi",
+            "domain": "default"
+          },
+          "even,good": {
+            "intent": "greetings.hi",
+            "domain": "default"
+          },
+          "dude,hey": {
+            "intent": "greetings.hi",
+            "domain": "default"
+          },
+          "buddi,hello": {
+            "intent": "greetings.hi",
+            "domain": "default"
+          },
+          "bot,hi": {
+            "intent": "greetings.hi",
+            "domain": "default"
+          },
+          "are,how,you": {
+            "intent": "user.ask.status",
+            "domain": "default"
+          },
+          "do,feel,how,you": {
+            "intent": "user.ask.status",
+            "domain": "default"
+          },
+          "are,okay,you": {
+            "intent": "user.ask.status",
+            "domain": "default"
+          },
+          "are,how,thing": {
+            "intent": "user.ask.status",
+            "domain": "default"
+          },
+          "everyth,good": {
+            "intent": "user.ask.status",
+            "domain": "default"
+          },
+          "alright,you": {
+            "intent": "user.ask.status",
+            "domain": "default"
+          },
+          "do,fine,you": {
+            "intent": "user.ask.status",
+            "domain": "default"
+          },
+          "are,okay,thing,with,you": {
+            "intent": "user.ask.status",
+            "domain": "default"
+          },
+          "can,help,me,you": {
+            "intent": "user.ask.help",
+            "domain": "default"
+          },
+          "help,i,need": {
+            "intent": "user.ask.help",
+            "domain": "default"
+          },
+          "help,me": {
+            "intent": "user.ask.help",
+            "domain": "default"
+          },
+          "a,have,i,problem": {
+            "intent": "user.ask.help",
+            "domain": "default"
+          },
+          "assist,me": {
+            "intent": "user.ask.help",
+            "domain": "default"
+          },
+          "can,do,what,you": {
+            "intent": "user.ask.help",
+            "domain": "default"
+          },
+          "i,need,some,support": {
+            "intent": "user.ask.help",
+            "domain": "default"
+          },
+          "assist,could,me,you": {
+            "intent": "user.ask.help",
+            "domain": "default"
+          },
+          "one,problem": {
+            "intent": "user.ask.help",
+            "domain": "default"
+          },
+          "can,get,help,i,some": {
+            "intent": "user.ask.help",
+            "domain": "default"
+          },
+          "do,help,how,know,to,you": {
+            "intent": "user.ask.help",
+            "domain": "default"
+          },
+          "are,who,you": {
+            "intent": "bot.identity",
+            "domain": "default"
+          },
+          "is,name,what,your": {
+            "intent": "bot.identity",
+            "domain": "default"
+          },
+          "a,are,bot,you": {
+            "intent": "bot.identity",
+            "domain": "default"
+          },
+          "about,me,tell,yourself": {
+            "intent": "bot.identity",
+            "domain": "default"
+          },
+          "about,can,me,tell,what,you": {
+            "intent": "bot.identity",
+            "domain": "default"
+          },
+          "are,human,you": {
+            "intent": "bot.identity",
+            "domain": "default"
+          },
+          "describ,yourself": {
+            "intent": "bot.identity",
+            "domain": "default"
+          },
+          "goodby": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "bye": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "see,soon,you": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "care,take": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "a,day,good,have": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "farewel": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "out,peac": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "i’m,leav": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "see,tomorrow,you": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "later": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "fuck": {
+            "intent": "badword",
+            "domain": "default"
+          },
+          "fucker": {
+            "intent": "badword",
+            "domain": "default"
+          },
+          "fucker,mother": {
+            "intent": "badword",
+            "domain": "default"
+          },
+          "assol": {
+            "intent": "badword",
+            "domain": "default"
+          },
+          "bc": {
+            "intent": "badword",
+            "domain": "default"
+          },
+          "mc": {
+            "intent": "badword",
+            "domain": "default"
+          },
+          "bsdk": {
+            "intent": "badword",
+            "domain": "default"
+          },
+          "forgot,i,notic": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "forgot,notic": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "can,help,notic,show,to,you": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "assist,forgot,how,i,to,wakeup,what": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "don’t,i,notic,rememb": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "can’t,i,rememb,wakeup,word": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "help,me,notic,rememb": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "help,me,rememb,wakeup,word": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "assist,help,me,to,wakeup": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "assist,i,lost,my,wakeup,word": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "can,me,remind,wakeup,word,you": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "help,i,need,rememb": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "forgot,i,oop,wakeup,word": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "forgot,i,just,wakeup,word": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "assist,how,to,up,wake": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "add,how,task,to": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "give,my,not,pend,task": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "assist,ninja,not,whi,work": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "ani,assist,give,not,respons": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "are,wake,what,word": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "assist,dead": {
+            "intent": "user.ask.forgot",
+            "domain": "default"
+          },
+          "3,automat,day,delet,my,old,task": {
+            "intent": "user.ask.autodelete",
+            "domain": "default"
+          },
+          "are,my,not,old,shown,task,whi": {
+            "intent": "user.ask.autodelete",
+            "domain": "default"
+          },
+          "is,my,old,task,where": {
+            "intent": "user.ask.autodelete",
+            "domain": "default"
+          },
+          "are,miss,my,old,task": {
+            "intent": "user.ask.autodelete",
+            "domain": "default"
+          },
+          "miss,some,task": {
+            "intent": "user.ask.autodelete",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "greetings.hi": "default",
+          "user.ask.status": "default",
+          "user.ask.help": "default",
+          "bot.identity": "default",
+          "greetings.bye": "default",
+          "badword": "default",
+          "user.ask.forgot": "default",
+          "user.ask.autodelete": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "hello",
+            "intent": "greetings.hi"
+          },
+          {
+            "domain": "default",
+            "utterance": "hi",
+            "intent": "greetings.hi"
+          },
+          {
+            "domain": "default",
+            "utterance": "yo",
+            "intent": "greetings.hi"
+          },
+          {
+            "domain": "default",
+            "utterance": "hey",
+            "intent": "greetings.hi"
+          },
+          {
+            "domain": "default",
+            "utterance": "hey there",
+            "intent": "greetings.hi"
+          },
+          {
+            "domain": "default",
+            "utterance": "hi there",
+            "intent": "greetings.hi"
+          },
+          {
+            "domain": "default",
+            "utterance": "what’s up",
+            "intent": "greetings.hi"
+          },
+          {
+            "domain": "default",
+            "utterance": "hello there",
+            "intent": "greetings.hi"
+          },
+          {
+            "domain": "default",
+            "utterance": "namaste",
+            "intent": "greetings.hi"
+          },
+          {
+            "domain": "default",
+            "utterance": "good morning",
+            "intent": "greetings.hi"
+          },
+          {
+            "domain": "default",
+            "utterance": "good afternoon",
+            "intent": "greetings.hi"
+          },
+          {
+            "domain": "default",
+            "utterance": "good evening",
+            "intent": "greetings.hi"
+          },
+          {
+            "domain": "default",
+            "utterance": "hey dude",
+            "intent": "greetings.hi"
+          },
+          {
+            "domain": "default",
+            "utterance": "hello buddy",
+            "intent": "greetings.hi"
+          },
+          {
+            "domain": "default",
+            "utterance": "hi bot",
+            "intent": "greetings.hi"
+          },
+          {
+            "domain": "default",
+            "utterance": "how are you",
+            "intent": "user.ask.status"
+          },
+          {
+            "domain": "default",
+            "utterance": "how do you feel",
+            "intent": "user.ask.status"
+          },
+          {
+            "domain": "default",
+            "utterance": "are you okay",
+            "intent": "user.ask.status"
+          },
+          {
+            "domain": "default",
+            "utterance": "how are things",
+            "intent": "user.ask.status"
+          },
+          {
+            "domain": "default",
+            "utterance": "everything good?",
+            "intent": "user.ask.status"
+          },
+          {
+            "domain": "default",
+            "utterance": "you alright?",
+            "intent": "user.ask.status"
+          },
+          {
+            "domain": "default",
+            "utterance": "you doing fine?",
+            "intent": "user.ask.status"
+          },
+          {
+            "domain": "default",
+            "utterance": "are things okay with you?",
+            "intent": "user.ask.status"
+          },
+          {
+            "domain": "default",
+            "utterance": "can you help me",
+            "intent": "user.ask.help"
+          },
+          {
+            "domain": "default",
+            "utterance": "i need help",
+            "intent": "user.ask.help"
+          },
+          {
+            "domain": "default",
+            "utterance": "help me",
+            "intent": "user.ask.help"
+          },
+          {
+            "domain": "default",
+            "utterance": "i have a problem",
+            "intent": "user.ask.help"
+          },
+          {
+            "domain": "default",
+            "utterance": "assist me",
+            "intent": "user.ask.help"
+          },
+          {
+            "domain": "default",
+            "utterance": "what can you do",
+            "intent": "user.ask.help"
+          },
+          {
+            "domain": "default",
+            "utterance": "i need some support",
+            "intent": "user.ask.help"
+          },
+          {
+            "domain": "default",
+            "utterance": "could you assist me?",
+            "intent": "user.ask.help"
+          },
+          {
+            "domain": "default",
+            "utterance": "one problem",
+            "intent": "user.ask.help"
+          },
+          {
+            "domain": "default",
+            "utterance": "can i get some help",
+            "intent": "user.ask.help"
+          },
+          {
+            "domain": "default",
+            "utterance": "do you know how to help?",
+            "intent": "user.ask.help"
+          },
+          {
+            "domain": "default",
+            "utterance": "who are you",
+            "intent": "bot.identity"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is your name",
+            "intent": "bot.identity"
+          },
+          {
+            "domain": "default",
+            "utterance": "are you a bot",
+            "intent": "bot.identity"
+          },
+          {
+            "domain": "default",
+            "utterance": "tell me about yourself",
+            "intent": "bot.identity"
+          },
+          {
+            "domain": "default",
+            "utterance": "what can you tell me about you",
+            "intent": "bot.identity"
+          },
+          {
+            "domain": "default",
+            "utterance": "are you human",
+            "intent": "bot.identity"
+          },
+          {
+            "domain": "default",
+            "utterance": "describe yourself",
+            "intent": "bot.identity"
+          },
+          {
+            "domain": "default",
+            "utterance": "goodbye",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "bye",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "see you soon",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "take care",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "have a good day",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "farewell",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "peace out",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "i’m leaving",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "see you tomorrow",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "later",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "fuck",
+            "intent": "badword"
+          },
+          {
+            "domain": "default",
+            "utterance": "fucker",
+            "intent": "badword"
+          },
+          {
+            "domain": "default",
+            "utterance": "mother fucker",
+            "intent": "badword"
+          },
+          {
+            "domain": "default",
+            "utterance": "assole",
+            "intent": "badword"
+          },
+          {
+            "domain": "default",
+            "utterance": "BC",
+            "intent": "badword"
+          },
+          {
+            "domain": "default",
+            "utterance": "MC",
+            "intent": "badword"
+          },
+          {
+            "domain": "default",
+            "utterance": "BSDK",
+            "intent": "badword"
+          },
+          {
+            "domain": "default",
+            "utterance": "I forgot notice",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "forgot notice",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "can you help to show notice",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "I forgot what how to wakeup assistant",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "I don’t remember notice",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "I can’t remember wakeup words",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "help me remember notice",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "help me remember wakeup words",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "help me to wakeup assistant",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "I lost my assistant wakeup word",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "can you remind me wakeup words",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "I need help remembering",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "oops I forgot wakeup words",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "I just forgot wakeup words",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "how to wake up assistant",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "how to add tasks",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "not give my pending tasks",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "why ninja assistant not work",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "assistant not give any response",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "what are wake words",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "assistant dead",
+            "intent": "user.ask.forgot"
+          },
+          {
+            "domain": "default",
+            "utterance": "automatic delete my 3 days old tasks",
+            "intent": "user.ask.autodelete"
+          },
+          {
+            "domain": "default",
+            "utterance": "why my old tasks are not shown",
+            "intent": "user.ask.autodelete"
+          },
+          {
+            "domain": "default",
+            "utterance": "where is my old tasks",
+            "intent": "user.ask.autodelete"
+          },
+          {
+            "domain": "default",
+            "utterance": "my old tasks are missing",
+            "intent": "user.ask.autodelete"
+          },
+          {
+            "domain": "default",
+            "utterance": "missing some tasks",
+            "intent": "user.ask.autodelete"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "3": 1,
+              "hello": 1,
+              "hi": 1,
+              "yo": 1,
+              "hey": 1,
+              "there": 1,
+              "what’": 1,
+              "up": 1,
+              "namast": 1,
+              "good": 1,
+              "morn": 1,
+              "afternoon": 1,
+              "even": 1,
+              "dude": 1,
+              "buddi": 1,
+              "bot": 1,
+              "how": 1,
+              "are": 1,
+              "you": 1,
+              "do": 1,
+              "feel": 1,
+              "okay": 1,
+              "thing": 1,
+              "everyth": 1,
+              "alright": 1,
+              "fine": 1,
+              "with": 1,
+              "can": 1,
+              "help": 1,
+              "me": 1,
+              "i": 1,
+              "need": 1,
+              "have": 1,
+              "a": 1,
+              "problem": 1,
+              "assist": 1,
+              "what": 1,
+              "some": 1,
+              "support": 1,
+              "could": 1,
+              "one": 1,
+              "get": 1,
+              "know": 1,
+              "to": 1,
+              "who": 1,
+              "is": 1,
+              "your": 1,
+              "name": 1,
+              "tell": 1,
+              "about": 1,
+              "yourself": 1,
+              "human": 1,
+              "describ": 1,
+              "goodby": 1,
+              "bye": 1,
+              "see": 1,
+              "soon": 1,
+              "take": 1,
+              "care": 1,
+              "day": 1,
+              "farewel": 1,
+              "peac": 1,
+              "out": 1,
+              "i’m": 1,
+              "leav": 1,
+              "tomorrow": 1,
+              "later": 1,
+              "fuck": 1,
+              "fucker": 1,
+              "mother": 1,
+              "assol": 1,
+              "bc": 1,
+              "mc": 1,
+              "bsdk": 1,
+              "forgot": 1,
+              "notic": 1,
+              "show": 1,
+              "wakeup": 1,
+              "don’t": 1,
+              "rememb": 1,
+              "can’t": 1,
+              "word": 1,
+              "lost": 1,
+              "my": 1,
+              "remind": 1,
+              "oop": 1,
+              "just": 1,
+              "wake": 1,
+              "add": 1,
+              "task": 1,
+              "not": 1,
+              "give": 1,
+              "pend": 1,
+              "whi": 1,
+              "ninja": 1,
+              "work": 1,
+              "ani": 1,
+              "respons": 1,
+              "dead": 1,
+              "automat": 1,
+              "delet": 1,
+              "old": 1,
+              "shown": 1,
+              "where": 1,
+              "miss": 1
+            },
+            "intents": {
+              "greetings.hi": 1,
+              "user.ask.status": 1,
+              "user.ask.help": 1,
+              "bot.identity": 1,
+              "greetings.bye": 1,
+              "badword": 1,
+              "user.ask.forgot": 1,
+              "user.ask.autodelete": 1
+            },
+            "intentFeatures": {
+              "greetings.hi": {
+                "hello": 1,
+                "hi": 1,
+                "yo": 1,
+                "hey": 1,
+                "there": 1,
+                "what’": 1,
+                "up": 1,
+                "namast": 1,
+                "good": 1,
+                "morn": 1,
+                "afternoon": 1,
+                "even": 1,
+                "dude": 1,
+                "buddi": 1,
+                "bot": 1
+              },
+              "user.ask.status": {
+                "how": 1,
+                "are": 1,
+                "you": 1,
+                "do": 1,
+                "feel": 1,
+                "okay": 1,
+                "thing": 1,
+                "everyth": 1,
+                "good": 1,
+                "alright": 1,
+                "fine": 1,
+                "with": 1
+              },
+              "user.ask.help": {
+                "can": 1,
+                "you": 1,
+                "help": 1,
+                "me": 1,
+                "i": 1,
+                "need": 1,
+                "have": 1,
+                "a": 1,
+                "problem": 1,
+                "assist": 1,
+                "what": 1,
+                "do": 1,
+                "some": 1,
+                "support": 1,
+                "could": 1,
+                "one": 1,
+                "get": 1,
+                "know": 1,
+                "how": 1,
+                "to": 1
+              },
+              "bot.identity": {
+                "who": 1,
+                "are": 1,
+                "you": 1,
+                "what": 1,
+                "is": 1,
+                "your": 1,
+                "name": 1,
+                "a": 1,
+                "bot": 1,
+                "tell": 1,
+                "me": 1,
+                "about": 1,
+                "yourself": 1,
+                "can": 1,
+                "human": 1,
+                "describ": 1
+              },
+              "greetings.bye": {
+                "goodby": 1,
+                "bye": 1,
+                "see": 1,
+                "you": 1,
+                "soon": 1,
+                "take": 1,
+                "care": 1,
+                "have": 1,
+                "a": 1,
+                "good": 1,
+                "day": 1,
+                "farewel": 1,
+                "peac": 1,
+                "out": 1,
+                "i’m": 1,
+                "leav": 1,
+                "tomorrow": 1,
+                "later": 1
+              },
+              "badword": {
+                "fuck": 1,
+                "fucker": 1,
+                "mother": 1,
+                "assol": 1,
+                "bc": 1,
+                "mc": 1,
+                "bsdk": 1
+              },
+              "user.ask.forgot": {
+                "i": 1,
+                "forgot": 1,
+                "notic": 1,
+                "can": 1,
+                "you": 1,
+                "help": 1,
+                "to": 1,
+                "show": 1,
+                "what": 1,
+                "how": 1,
+                "wakeup": 1,
+                "assist": 1,
+                "don’t": 1,
+                "rememb": 1,
+                "can’t": 1,
+                "word": 1,
+                "me": 1,
+                "lost": 1,
+                "my": 1,
+                "remind": 1,
+                "need": 1,
+                "oop": 1,
+                "just": 1,
+                "wake": 1,
+                "up": 1,
+                "add": 1,
+                "task": 1,
+                "not": 1,
+                "give": 1,
+                "pend": 1,
+                "whi": 1,
+                "ninja": 1,
+                "work": 1,
+                "ani": 1,
+                "respons": 1,
+                "are": 1,
+                "dead": 1
+              },
+              "user.ask.autodelete": {
+                "3": 1,
+                "automat": 1,
+                "delet": 1,
+                "my": 1,
+                "day": 1,
+                "old": 1,
+                "task": 1,
+                "whi": 1,
+                "are": 1,
+                "not": 1,
+                "shown": 1,
+                "where": 1,
+                "is": 1,
+                "miss": 1,
+                "some": 1
+              }
+            },
+            "featuresToIntent": {
+              "3": [
+                "user.ask.autodelete"
+              ],
+              "hello": [
+                "greetings.hi"
+              ],
+              "hi": [
+                "greetings.hi"
+              ],
+              "yo": [
+                "greetings.hi"
+              ],
+              "hey": [
+                "greetings.hi"
+              ],
+              "there": [
+                "greetings.hi"
+              ],
+              "what’": [
+                "greetings.hi"
+              ],
+              "up": [
+                "greetings.hi",
+                "user.ask.forgot"
+              ],
+              "namast": [
+                "greetings.hi"
+              ],
+              "good": [
+                "greetings.hi",
+                "user.ask.status",
+                "greetings.bye"
+              ],
+              "morn": [
+                "greetings.hi"
+              ],
+              "afternoon": [
+                "greetings.hi"
+              ],
+              "even": [
+                "greetings.hi"
+              ],
+              "dude": [
+                "greetings.hi"
+              ],
+              "buddi": [
+                "greetings.hi"
+              ],
+              "bot": [
+                "greetings.hi",
+                "bot.identity"
+              ],
+              "how": [
+                "user.ask.status",
+                "user.ask.help",
+                "user.ask.forgot"
+              ],
+              "are": [
+                "user.ask.status",
+                "bot.identity",
+                "user.ask.forgot",
+                "user.ask.autodelete"
+              ],
+              "you": [
+                "user.ask.status",
+                "user.ask.help",
+                "bot.identity",
+                "greetings.bye",
+                "user.ask.forgot"
+              ],
+              "do": [
+                "user.ask.status",
+                "user.ask.help"
+              ],
+              "feel": [
+                "user.ask.status"
+              ],
+              "okay": [
+                "user.ask.status"
+              ],
+              "thing": [
+                "user.ask.status"
+              ],
+              "everyth": [
+                "user.ask.status"
+              ],
+              "alright": [
+                "user.ask.status"
+              ],
+              "fine": [
+                "user.ask.status"
+              ],
+              "with": [
+                "user.ask.status"
+              ],
+              "can": [
+                "user.ask.help",
+                "bot.identity",
+                "user.ask.forgot"
+              ],
+              "help": [
+                "user.ask.help",
+                "user.ask.forgot"
+              ],
+              "me": [
+                "user.ask.help",
+                "bot.identity",
+                "user.ask.forgot"
+              ],
+              "i": [
+                "user.ask.help",
+                "user.ask.forgot"
+              ],
+              "need": [
+                "user.ask.help",
+                "user.ask.forgot"
+              ],
+              "have": [
+                "user.ask.help",
+                "greetings.bye"
+              ],
+              "a": [
+                "user.ask.help",
+                "bot.identity",
+                "greetings.bye"
+              ],
+              "problem": [
+                "user.ask.help"
+              ],
+              "assist": [
+                "user.ask.help",
+                "user.ask.forgot"
+              ],
+              "what": [
+                "user.ask.help",
+                "bot.identity",
+                "user.ask.forgot"
+              ],
+              "some": [
+                "user.ask.help",
+                "user.ask.autodelete"
+              ],
+              "support": [
+                "user.ask.help"
+              ],
+              "could": [
+                "user.ask.help"
+              ],
+              "one": [
+                "user.ask.help"
+              ],
+              "get": [
+                "user.ask.help"
+              ],
+              "know": [
+                "user.ask.help"
+              ],
+              "to": [
+                "user.ask.help",
+                "user.ask.forgot"
+              ],
+              "who": [
+                "bot.identity"
+              ],
+              "is": [
+                "bot.identity",
+                "user.ask.autodelete"
+              ],
+              "your": [
+                "bot.identity"
+              ],
+              "name": [
+                "bot.identity"
+              ],
+              "tell": [
+                "bot.identity"
+              ],
+              "about": [
+                "bot.identity"
+              ],
+              "yourself": [
+                "bot.identity"
+              ],
+              "human": [
+                "bot.identity"
+              ],
+              "describ": [
+                "bot.identity"
+              ],
+              "goodby": [
+                "greetings.bye"
+              ],
+              "bye": [
+                "greetings.bye"
+              ],
+              "see": [
+                "greetings.bye"
+              ],
+              "soon": [
+                "greetings.bye"
+              ],
+              "take": [
+                "greetings.bye"
+              ],
+              "care": [
+                "greetings.bye"
+              ],
+              "day": [
+                "greetings.bye",
+                "user.ask.autodelete"
+              ],
+              "farewel": [
+                "greetings.bye"
+              ],
+              "peac": [
+                "greetings.bye"
+              ],
+              "out": [
+                "greetings.bye"
+              ],
+              "i’m": [
+                "greetings.bye"
+              ],
+              "leav": [
+                "greetings.bye"
+              ],
+              "tomorrow": [
+                "greetings.bye"
+              ],
+              "later": [
+                "greetings.bye"
+              ],
+              "fuck": [
+                "badword"
+              ],
+              "fucker": [
+                "badword"
+              ],
+              "mother": [
+                "badword"
+              ],
+              "assol": [
+                "badword"
+              ],
+              "bc": [
+                "badword"
+              ],
+              "mc": [
+                "badword"
+              ],
+              "bsdk": [
+                "badword"
+              ],
+              "forgot": [
+                "user.ask.forgot"
+              ],
+              "notic": [
+                "user.ask.forgot"
+              ],
+              "show": [
+                "user.ask.forgot"
+              ],
+              "wakeup": [
+                "user.ask.forgot"
+              ],
+              "don’t": [
+                "user.ask.forgot"
+              ],
+              "rememb": [
+                "user.ask.forgot"
+              ],
+              "can’t": [
+                "user.ask.forgot"
+              ],
+              "word": [
+                "user.ask.forgot"
+              ],
+              "lost": [
+                "user.ask.forgot"
+              ],
+              "my": [
+                "user.ask.forgot",
+                "user.ask.autodelete"
+              ],
+              "remind": [
+                "user.ask.forgot"
+              ],
+              "oop": [
+                "user.ask.forgot"
+              ],
+              "just": [
+                "user.ask.forgot"
+              ],
+              "wake": [
+                "user.ask.forgot"
+              ],
+              "add": [
+                "user.ask.forgot"
+              ],
+              "task": [
+                "user.ask.forgot",
+                "user.ask.autodelete"
+              ],
+              "not": [
+                "user.ask.forgot",
+                "user.ask.autodelete"
+              ],
+              "give": [
+                "user.ask.forgot"
+              ],
+              "pend": [
+                "user.ask.forgot"
+              ],
+              "whi": [
+                "user.ask.forgot",
+                "user.ask.autodelete"
+              ],
+              "ninja": [
+                "user.ask.forgot"
+              ],
+              "work": [
+                "user.ask.forgot"
+              ],
+              "ani": [
+                "user.ask.forgot"
+              ],
+              "respons": [
+                "user.ask.forgot"
+              ],
+              "dead": [
+                "user.ask.forgot"
+              ],
+              "automat": [
+                "user.ask.autodelete"
+              ],
+              "delet": [
+                "user.ask.autodelete"
+              ],
+              "old": [
+                "user.ask.autodelete"
+              ],
+              "shown": [
+                "user.ask.autodelete"
+              ],
+              "where": [
+                "user.ask.autodelete"
+              ],
+              "miss": [
+                "user.ask.autodelete"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "useNoneFeature": false,
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true
+              },
+              "features": [
+                "hello",
+                "hi",
+                "yo",
+                "hey",
+                "there",
+                "what’",
+                "up",
+                "namast",
+                "good",
+                "morn",
+                "afternoon",
+                "even",
+                "dude",
+                "buddi",
+                "bot",
+                "how",
+                "are",
+                "you",
+                "do",
+                "feel",
+                "okay",
+                "thing",
+                "everyth",
+                "alright",
+                "fine",
+                "with",
+                "can",
+                "help",
+                "me",
+                "i",
+                "need",
+                "have",
+                "a",
+                "problem",
+                "assist",
+                "what",
+                "some",
+                "support",
+                "could",
+                "one",
+                "get",
+                "know",
+                "to",
+                "who",
+                "is",
+                "your",
+                "name",
+                "tell",
+                "about",
+                "yourself",
+                "human",
+                "describ",
+                "goodby",
+                "bye",
+                "see",
+                "soon",
+                "take",
+                "care",
+                "day",
+                "farewel",
+                "peac",
+                "out",
+                "i’m",
+                "leav",
+                "tomorrow",
+                "later",
+                "fuck",
+                "fucker",
+                "mother",
+                "assol",
+                "bc",
+                "mc",
+                "bsdk",
+                "forgot",
+                "notic",
+                "show",
+                "wakeup",
+                "don’t",
+                "rememb",
+                "can’t",
+                "word",
+                "lost",
+                "my",
+                "remind",
+                "oop",
+                "just",
+                "wake",
+                "add",
+                "task",
+                "not",
+                "give",
+                "pend",
+                "whi",
+                "ninja",
+                "work",
+                "ani",
+                "respons",
+                "dead",
+                "3",
+                "automat",
+                "delet",
+                "old",
+                "shown",
+                "where",
+                "miss"
+              ],
+              "intents": [
+                "greetings.hi",
+                "user.ask.status",
+                "user.ask.help",
+                "bot.identity",
+                "greetings.bye",
+                "badword",
+                "user.ask.forgot",
+                "user.ask.autodelete"
+              ],
+              "perceptrons": [
+                [
+                  10.759130477905273,
+                  10.756512641906738,
+                  10.809294700622559,
+                  10.754751205444336,
+                  0.05457514896988869,
+                  5.97755241394043,
+                  4.828698635101318,
+                  10.807454109191895,
+                  5.287572383880615,
+                  5.518414497375488,
+                  5.518401622772217,
+                  5.5183491706848145,
+                  0.07777008414268494,
+                  0.07275844365358353,
+                  0.07793859392404556,
+                  -3.08426570892334,
+                  -1.9801968336105347,
+                  -3.6327872276306152,
+                  -1.0483198165893555,
+                  -0.3912726044654846,
+                  -0.613667368888855,
+                  -0.7917774319648743,
+                  -8.762384414672852,
+                  -0.7084962129592896,
+                  -0.35721269249916077,
+                  -0.0725361779332161,
+                  -0.4939880669116974,
+                  -1.8695697784423828,
+                  -2.5020174980163574,
+                  -2.3480629920959473,
+                  -1.1575953960418701,
+                  -3.066908359527588,
+                  -3.066908359527588,
+                  -2.1388728618621826,
+                  -2.904637336730957,
+                  -1.113921046257019,
+                  -1.4389528036117554,
+                  -0.48168250918388367,
+                  -0.026434488594532013,
+                  -1.5767643451690674,
+                  -0.13353146612644196,
+                  0,
+                  -1.1655540466308594,
+                  0,
+                  -1.1786102056503296,
+                  -1.0066949129104614,
+                  -1.0066949129104614,
+                  -0.47077783942222595,
+                  -0.47077783942222595,
+                  -2.1014695167541504,
+                  0,
+                  -1.5548797845840454,
+                  -3.473130226135254,
+                  -3.4729394912719727,
+                  -0.14832168817520142,
+                  -0.14832168817520142,
+                  -1.742929458618164,
+                  -1.742929458618164,
+                  -2.629375457763672,
+                  -3.472715139389038,
+                  -1.737303376197815,
+                  -1.737303376197815,
+                  -1.737273097038269,
+                  -1.737273097038269,
+                  0,
+                  -3.472351551055908,
+                  -3.472137451171875,
+                  -3.47192645072937,
+                  -0.8922654986381531,
+                  -3.4716923236846924,
+                  -3.471456527709961,
+                  -3.471212387084961,
+                  -3.4709596633911133,
+                  -1.7301228046417236,
+                  -1.7431527376174927,
+                  0,
+                  -0.281825453042984,
+                  -0.013593490235507488,
+                  -0.2948554456233978,
+                  -0.2676685154438019,
+                  -0.281825453042984,
+                  0,
+                  -0.6300466060638428,
+                  0,
+                  -0.005780738778412342,
+                  -0.0012977399164810777,
+                  -1.1488306522369385,
+                  -0.008361699990928173,
+                  -1.340824842453003,
+                  -0.6457769870758057,
+                  -0.4771297872066498,
+                  -0.3806148171424866,
+                  -0.1306265890598297,
+                  -0.1306265890598297,
+                  -0.1306265890598297,
+                  -0.0796632468700409,
+                  -0.0796632468700409,
+                  -0.5685471296310425,
+                  -0.08192693442106247,
+                  -0.08192693442106247,
+                  -0.08192693442106247,
+                  -0.2333788126707077,
+                  0,
+                  -0.11123424023389816,
+                  -0.6940107345581055,
+                  3.4744608105173715
+                ],
+                [
+                  -0.4520682096481323,
+                  -0.45197629928588867,
+                  -0.4518815577030182,
+                  -0.45178624987602234,
+                  -0.15061664581298828,
+                  -0.02054361067712307,
+                  -0.43221545219421387,
+                  -0.4516521096229553,
+                  2.4605114459991455,
+                  -2.9135241508483887,
+                  -2.9134681224823,
+                  -2.9133822917938232,
+                  -0.010075331665575504,
+                  -0.00558690307661891,
+                  -3.143749713897705,
+                  7.636080741882324,
+                  2.6179280281066895,
+                  3.6374850273132324,
+                  2.0765042304992676,
+                  0.4802882969379425,
+                  7.534236431121826,
+                  3.538248300552368,
+                  11.370047569274902,
+                  10.180027961730957,
+                  8.114256858825684,
+                  -3.4708962440490723,
+                  -3.689175844192505,
+                  -5.116477966308594,
+                  -2.401477098464966,
+                  -0.83219975233078,
+                  -0.5095555186271667,
+                  -0.45454803109169006,
+                  -3.6181252002716064,
+                  -0.7772594690322876,
+                  -1.7575997114181519,
+                  -3.0786688327789307,
+                  -0.2613508999347687,
+                  -0.2613508999347687,
+                  -1.0498895645141602,
+                  -0.472919225692749,
+                  0,
+                  -3.7723653316497803,
+                  -5.332939624786377,
+                  -6.759097576141357,
+                  -0.06993459165096283,
+                  -0.06993459165096283,
+                  -0.06993459165096283,
+                  -0.015059534460306168,
+                  -0.015059534460306168,
+                  -0.2837703824043274,
+                  -6.751802444458008,
+                  -0.2823072373867035,
+                  -0.4531027376651764,
+                  -0.45302537083625793,
+                  -2.9101052284240723,
+                  -1.4980580806732178,
+                  -0.2436809539794922,
+                  -0.2436809539794922,
+                  -0.15759529173374176,
+                  -0.45294803380966187,
+                  -0.23460574448108673,
+                  -0.23460574448108673,
+                  -0.2316126525402069,
+                  -0.2316126525402069,
+                  -1.4093730449676514,
+                  -0.4528714418411255,
+                  -0.4527946412563324,
+                  -0.4527178108692169,
+                  -0.11879267543554306,
+                  -0.45263752341270447,
+                  -0.4525566101074219,
+                  -0.4524741470813751,
+                  -0.4523901641368866,
+                  -0.23471257090568542,
+                  -0.21854491531848907,
+                  0,
+                  -0.008083831518888474,
+                  0,
+                  0,
+                  0,
+                  -0.15589329600334167,
+                  0,
+                  -0.5642666816711426,
+                  0,
+                  0,
+                  0,
+                  -0.6165857911109924,
+                  -1.126563549041748,
+                  -1.690989375114441,
+                  -0.25765907764434814,
+                  -0.007169055286794901,
+                  -0.007169055286794901,
+                  -0.24376901984214783,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -0.0020666078198701143,
+                  -0.0020666078198701143,
+                  -0.0020666078198701143,
+                  -0.5499286651611328,
+                  -0.24376901984214783,
+                  0,
+                  -0.26587188243865967,
+                  0.45379239685193673
+                ],
+                [
+                  -0.4702504873275757,
+                  -0.4701787233352661,
+                  -0.4701022803783417,
+                  -0.4700251519680023,
+                  -0.0997508093714714,
+                  -0.22214092314243317,
+                  -0.2484055459499359,
+                  -0.46991413831710815,
+                  -1.5457137823104858,
+                  0,
+                  0,
+                  0,
+                  -0.06778587400913239,
+                  -0.06241457909345627,
+                  -1.0314933061599731,
+                  0.4833282232284546,
+                  -2.679961681365967,
+                  -3.1171765327453613,
+                  8.952506065368652,
+                  -6.778513431549072,
+                  0,
+                  0,
+                  0,
+                  -0.27937477827072144,
+                  -6.303516387939453,
+                  0,
+                  3.099062442779541,
+                  4.263979911804199,
+                  9.591670989990234,
+                  4.7794060707092285,
+                  4.693510055541992,
+                  0.9895842671394348,
+                  -0.12936082482337952,
+                  8.182303428649902,
+                  4.114100933074951,
+                  4.864518165588379,
+                  1.5794134140014648,
+                  2.7798914909362793,
+                  3.2377519607543945,
+                  5.6239752769470215,
+                  0.07784122228622437,
+                  8.08785343170166,
+                  -4.875399589538574,
+                  -0.8641541600227356,
+                  -1.7790592908859253,
+                  -1.7790592908859253,
+                  -1.7790592908859253,
+                  -7.472593784332275,
+                  -7.472593784332275,
+                  -1.3382682800292969,
+                  -0.4680681824684143,
+                  -0.30174654722213745,
+                  -0.7280190587043762,
+                  -0.7182721495628357,
+                  -1.453257441520691,
+                  -0.8033674955368042,
+                  -0.5015519261360168,
+                  -0.5015519261360168,
+                  -1.5457137823104858,
+                  -0.6311751008033752,
+                  -0.43549737334251404,
+                  -0.43549737334251404,
+                  -0.4233575463294983,
+                  -0.4233575463294983,
+                  -0.5805726647377014,
+                  -0.5866170525550842,
+                  -0.5768865942955017,
+                  -0.6806976199150085,
+                  -0.25711145997047424,
+                  -0.5580855011940002,
+                  -0.5496909022331238,
+                  -0.5418688654899597,
+                  -0.5346168279647827,
+                  -1.511629581451416,
+                  -4.737176895141602,
+                  -1.8308151960372925,
+                  -13.553502082824707,
+                  -0.22491882741451263,
+                  -14.181897163391113,
+                  -0.19161780178546906,
+                  -2.5698599815368652,
+                  -0.36678850650787354,
+                  -0.36678850650787354,
+                  -0.9672729969024658,
+                  0,
+                  0,
+                  -0.08455396443605423,
+                  0,
+                  -1.2758442163467407,
+                  -1.8343714475631714,
+                  -0.9168141484260559,
+                  0,
+                  -0.9171553254127502,
+                  -0.9171553254127502,
+                  -0.9171553254127502,
+                  -0.9168141484260559,
+                  -0.9168141484260559,
+                  -4.5536088943481445,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -1.2758442163467407,
+                  0.470747524366139
+                ],
+                [
+                  -0.16497662663459778,
+                  -2.5213308334350586,
+                  -0.10496926307678223,
+                  -0.16612236201763153,
+                  -0.09993776679039001,
+                  -0.07733691483736038,
+                  -0.07733691483736038,
+                  -0.09282568097114563,
+                  -0.964745819568634,
+                  -0.001392094069160521,
+                  0,
+                  0,
+                  -0.03982947766780853,
+                  -0.03883285075426102,
+                  3.4474313259124756,
+                  -6.579628944396973,
+                  4.638901710510254,
+                  3.101762056350708,
+                  -5.130820274353027,
+                  -0.1585337519645691,
+                  -6.579183578491211,
+                  -1.2425662279129028,
+                  0,
+                  -1.9281611442565918,
+                  -0.32352638244628906,
+                  -0.9808368682861328,
+                  -0.20285293459892273,
+                  -2.1900269985198975,
+                  0.46739381551742554,
+                  -1.0605700016021729,
+                  0,
+                  -1.6220868825912476,
+                  4.272480010986328,
+                  -0.6437900066375732,
+                  -1.5879473686218262,
+                  3.423305034637451,
+                  0,
+                  0,
+                  -1.018460750579834,
+                  0,
+                  0,
+                  0,
+                  -0.7478623986244202,
+                  7.719408988952637,
+                  3.9010512828826904,
+                  4.0684027671813965,
+                  4.0684027671813965,
+                  4.324268341064453,
+                  4.324268341064453,
+                  6.369585037231445,
+                  7.718877792358398,
+                  9.072612762451172,
+                  -0.5335806608200073,
+                  -0.5142633318901062,
+                  -2.0215604305267334,
+                  -1.0303912162780762,
+                  -0.38087227940559387,
+                  -0.38087227940559387,
+                  -0.9803318381309509,
+                  -0.41867154836654663,
+                  -0.3330821692943573,
+                  -0.3330821692943573,
+                  -0.3216261863708496,
+                  -0.3216261863708496,
+                  -0.9063851237297058,
+                  -0.3669520318508148,
+                  -0.3544161021709442,
+                  -0.49798712134361267,
+                  -0.18471167981624603,
+                  -0.325268030166626,
+                  -0.3140893876552582,
+                  -0.3032835125923157,
+                  -0.2928384840488434,
+                  -0.3825063109397888,
+                  -0.9083220362663269,
+                  -0.3893760144710541,
+                  -1.323665738105774,
+                  -0.02112199366092682,
+                  -0.4191763401031494,
+                  -0.026314612478017807,
+                  -4.01052713394165,
+                  0,
+                  -1.2997370958328247,
+                  -0.7860808968544006,
+                  0,
+                  0,
+                  -2.8776040077209473,
+                  -0.001850841217674315,
+                  -1.3034389019012451,
+                  -0.5020025968551636,
+                  -0.05680352449417114,
+                  -0.024399979040026665,
+                  -0.4319314956665039,
+                  -0.022306177765130997,
+                  -0.022306177765130997,
+                  -0.014103558845818043,
+                  -0.014103558845818043,
+                  -0.009380185045301914,
+                  -0.009192769415676594,
+                  -0.009192769415676594,
+                  -0.009192769415676594,
+                  -1.2509373426437378,
+                  -0.39792242646217346,
+                  -0.1575971096754074,
+                  -0.5896467566490173,
+                  -1.172899786229448
+                ],
+                [
+                  -3.297393560409546,
+                  -3.2973811626434326,
+                  -3.2973623275756836,
+                  -3.297356128692627,
+                  -1.2711989879608154,
+                  -1.556536078453064,
+                  -1.7408490180969238,
+                  -3.2973241806030273,
+                  -1.1417685747146606,
+                  -2.156053304672241,
+                  -2.1558310985565186,
+                  -2.1556222438812256,
+                  -0.5363358855247498,
+                  -0.5098382830619812,
+                  -1.712754726409912,
+                  -1.4911367893218994,
+                  -3.216517686843872,
+                  -0.5938582420349121,
+                  -1.705379605293274,
+                  -0.5153055191040039,
+                  -0.7418289184570312,
+                  -0.1402953714132309,
+                  -2.1556060314178467,
+                  -2.703521490097046,
+                  -1.0956553220748901,
+                  -0.1402953714132309,
+                  -1.031459093093872,
+                  -1.58971107006073,
+                  -1.707668662071228,
+                  -5.013517379760742,
+                  -0.12543229758739471,
+                  3.6604197025299072,
+                  2.2257494926452637,
+                  -4.170029163360596,
+                  -2.252805709838867,
+                  -1.140197515487671,
+                  -0.5993937253952026,
+                  0,
+                  0,
+                  -0.3265019953250885,
+                  0,
+                  0,
+                  -1.1161363124847412,
+                  -0.23191167414188385,
+                  -0.803642213344574,
+                  -0.676770806312561,
+                  -0.676770806312561,
+                  -0.20995374023914337,
+                  -0.20995374023914337,
+                  -1.759619951248169,
+                  -0.05367761477828026,
+                  -1.5377590656280518,
+                  10.988338470458984,
+                  10.988325119018555,
+                  7.721460819244385,
+                  3.860753059387207,
+                  5.494168281555176,
+                  5.494168281555176,
+                  6.243928909301758,
+                  10.988290786743164,
+                  5.494167327880859,
+                  5.494167327880859,
+                  5.494167327880859,
+                  5.494167327880859,
+                  3.8607070446014404,
+                  10.988231658935547,
+                  -3.3041176795959473,
+                  -3.334868907928467,
+                  -1.066392183303833,
+                  -3.2991747856140137,
+                  -3.2980008125305176,
+                  -3.2975480556488037,
+                  -3.2974135875701904,
+                  -1.3752217292785645,
+                  -1.9765504598617554,
+                  -0.396831750869751,
+                  -1.155631184577942,
+                  -0.13587506115436554,
+                  -0.7763825058937073,
+                  -0.14410702884197235,
+                  -1.119899034500122,
+                  -0.041316017508506775,
+                  -1.8248146772384644,
+                  -0.451805055141449,
+                  0,
+                  0,
+                  -0.3561307191848755,
+                  -0.15950748324394226,
+                  -2.550485372543335,
+                  -0.9441503882408142,
+                  -0.5168840885162354,
+                  -0.23641125857830048,
+                  -0.36713817715644836,
+                  -0.3113439381122589,
+                  -0.3113439381122589,
+                  -0.22325368225574493,
+                  -0.22325368225574493,
+                  -1.0721263885498047,
+                  -1.2374279499053955,
+                  -1.2374279499053955,
+                  -1.2374279499053955,
+                  -1.453731894493103,
+                  -0.027455320581793785,
+                  -0.10158665478229523,
+                  -0.6338820457458496,
+                  3.2973873498415864
+                ],
+                [
+                  -3.517291307449341,
+                  -3.5172455310821533,
+                  -3.517183303833008,
+                  -3.5171401500701904,
+                  -1.3823974132537842,
+                  -1.6411925554275513,
+                  -1.8764106035232544,
+                  -3.5170493125915527,
+                  -2.846928596496582,
+                  -0.7429254055023193,
+                  -0.7054583430290222,
+                  -0.6779223680496216,
+                  -0.6640163660049438,
+                  -0.6346432566642761,
+                  -0.6203842759132385,
+                  -1.4558537006378174,
+                  -1.4608864784240723,
+                  -2.683270215988159,
+                  -0.5490748286247253,
+                  -0.09336918592453003,
+                  -0.19850347936153412,
+                  -0.600933313369751,
+                  -0.6706101894378662,
+                  -0.867057740688324,
+                  -0.4442722797393799,
+                  -0.015635695308446884,
+                  -0.3887999951839447,
+                  -1.7496511936187744,
+                  -1.7678722143173218,
+                  -1.820495367050171,
+                  -0.46614575386047363,
+                  -0.21256889402866364,
+                  -0.21256889402866364,
+                  -1.8512440919876099,
+                  -2.4549596309661865,
+                  -1.3423672914505005,
+                  -0.9971174001693726,
+                  -0.23393550515174866,
+                  0,
+                  -1.6662569046020508,
+                  0,
+                  0,
+                  -1.0807207822799683,
+                  -0.010052412748336792,
+                  -0.8667319416999817,
+                  -0.6542873382568359,
+                  -0.6542873382568359,
+                  -0.331539124250412,
+                  -0.331539124250412,
+                  -1.9337528944015503,
+                  0,
+                  -1.5837254524230957,
+                  -3.5168588161468506,
+                  -3.5167787075042725,
+                  -0.5768438577651978,
+                  -0.31839868426322937,
+                  -1.7586846351623535,
+                  -1.7586846351623535,
+                  -0.24917085468769073,
+                  -3.516665458679199,
+                  -1.7586506605148315,
+                  -1.7586506605148315,
+                  -1.7586416006088257,
+                  -1.7586416006088257,
+                  -0.2573010325431824,
+                  -3.5164968967437744,
+                  10.769193649291992,
+                  10.72671890258789,
+                  0.06355921179056168,
+                  10.76822566986084,
+                  10.768242835998535,
+                  10.768254280090332,
+                  10.768256187438965,
+                  -1.5872936248779297,
+                  -2.0599725246429443,
+                  -0.18848364055156708,
+                  -0.9063206911087036,
+                  -0.15561825037002563,
+                  -0.9987789988517761,
+                  -0.15863049030303955,
+                  -1.097251057624817,
+                  -0.038606904447078705,
+                  -0.9621810913085938,
+                  -0.1306142359972,
+                  0,
+                  0,
+                  -0.6963014602661133,
+                  -0.2696393132209778,
+                  -1.9701776504516602,
+                  -1.0427870750427246,
+                  -0.5743202567100525,
+                  -0.2621639370918274,
+                  -0.39739465713500977,
+                  -0.3353935778141022,
+                  -0.3353935778141022,
+                  -0.2421196848154068,
+                  -0.2421196848154068,
+                  -1.1540874242782593,
+                  -0.1906939297914505,
+                  -0.1906939297914505,
+                  -0.1906939297914505,
+                  -0.5542319416999817,
+                  -0.030794750899076462,
+                  -0.17867331206798553,
+                  -0.8131924271583557,
+                  3.5180352741653156
+                ],
+                [
+                  -1.3840665817260742,
+                  -1.396896243095398,
+                  -1.0238912105560303,
+                  -1.376316785812378,
+                  -1.0049570798873901,
+                  -1.219004511833191,
+                  -1.8723323345184326,
+                  -0.9487261772155762,
+                  -1.369091510772705,
+                  -0.3517620265483856,
+                  -0.31716716289520264,
+                  -0.28172963857650757,
+                  -0.2648715674877167,
+                  -0.29120776057243347,
+                  -0.2757928669452667,
+                  -7.216604232788086,
+                  2.939631223678589,
+                  -2.0412864685058594,
+                  -2.6272401809692383,
+                  -0.3771515488624573,
+                  -0.42334192991256714,
+                  -0.6035615801811218,
+                  -0.18381984531879425,
+                  -0.2538295388221741,
+                  -0.08276494592428207,
+                  -0.025690216571092606,
+                  2.7841176986694336,
+                  -0.1637718230485916,
+                  -4.723060607910156,
+                  -1.0360960960388184,
+                  3.228032350540161,
+                  -0.7022181153297424,
+                  -0.7022181153297424,
+                  -0.8300299048423767,
+                  5.519900321960449,
+                  -2.2684106826782227,
+                  -2.6878771781921387,
+                  -0.33645275235176086,
+                  -1.5216658115386963,
+                  -0.025182625278830528,
+                  -1.0385358333587646,
+                  -1.6674621105194092,
+                  9.727116584777832,
+                  -0.3435637354850769,
+                  -0.7845771312713623,
+                  -0.291751503944397,
+                  -0.291751503944397,
+                  -0.10032123327255249,
+                  -0.10032123327255249,
+                  -0.32997605204582214,
+                  -0.3392772078514099,
+                  -0.3037429749965668,
+                  -0.5141907930374146,
+                  -0.5069846510887146,
+                  0,
+                  0,
+                  -0.2997779846191406,
+                  -0.2997779846191406,
+                  -0.47686436772346497,
+                  -0.4991825819015503,
+                  -0.29165056347846985,
+                  -0.29165056347846985,
+                  -0.28861552476882935,
+                  -0.28861552476882935,
+                  0,
+                  -0.4886420965194702,
+                  -0.48361167311668396,
+                  -0.5008622407913208,
+                  -0.1583760678768158,
+                  -0.474587619304657,
+                  -0.46939775347709656,
+                  -0.46525734663009644,
+                  -0.4611411392688751,
+                  6.617450714111328,
+                  8.437699317932129,
+                  -3.8354573249816895,
+                  3.9019482135772705,
+                  -3.742810010910034,
+                  11.457293510437012,
+                  -4.348418235778809,
+                  5.081967830657959,
+                  1.7961595058441162,
+                  -0.33817484974861145,
+                  9.678231239318848,
+                  0.2154778689146042,
+                  0.1735011488199234,
+                  8.708761215209961,
+                  7.72449254989624,
+                  4.3970441818237305,
+                  3.4018280506134033,
+                  4.073152542114258,
+                  3.2027297019958496,
+                  -0.6714950203895569,
+                  3.234414577484131,
+                  3.234414577484131,
+                  0.8699977993965149,
+                  0.8699977993965149,
+                  9.193981170654297,
+                  -0.47686436772346497,
+                  -0.47686436772346497,
+                  -0.47686436772346497,
+                  -5.3394927978515625,
+                  -3.9059064388275146,
+                  -0.4209323227405548,
+                  -1.4944589138031006,
+                  -0.44236834481855264
+                ],
+                [
+                  -0.3396669924259186,
+                  -0.34308892488479614,
+                  -0.12865306437015533,
+                  -0.3481418192386627,
+                  -0.2496701180934906,
+                  -0.10857947915792465,
+                  -0.10857947915792465,
+                  -0.10370445996522903,
+                  -0.3752906918525696,
+                  -0.08773575723171234,
+                  -0.07924389839172363,
+                  -0.07032212615013123,
+                  -0.06618741154670715,
+                  -0.06383958458900452,
+                  -0.1429668366909027,
+                  -2.1300241947174072,
+                  -0.3490152060985565,
+                  -0.9862238764762878,
+                  -0.058876100927591324,
+                  -0.03162360191345215,
+                  -0.31857389211654663,
+                  -0.32665887475013733,
+                  -0.021620111539959908,
+                  -0.016947723925113678,
+                  -0.011440698057413101,
+                  -0.0928744450211525,
+                  -0.6258060932159424,
+                  -0.7365555167198181,
+                  -0.1301950216293335,
+                  -2.109914779663086,
+                  -1.015950322151184,
+                  -0.05250655859708786,
+                  -0.13834068179130554,
+                  -0.07926730066537857,
+                  -0.7597185373306274,
+                  -0.4823213815689087,
+                  4.563410758972168,
+                  -0.9645277857780457,
+                  0,
+                  -0.039473120123147964,
+                  -0.6181306838989258,
+                  0,
+                  -1.6008827686309814,
+                  -0.09172715991735458,
+                  1.8074946403503418,
+                  -0.42608925700187683,
+                  -0.42608925700187683,
+                  -0.016869986429810524,
+                  -0.016869986429810524,
+                  -0.0464489683508873,
+                  -0.056264180690050125,
+                  -0.022299421951174736,
+                  -0.023519383743405342,
+                  -0.022552985697984695,
+                  0,
+                  0,
+                  -0.021207036450505257,
+                  -0.021207036450505257,
+                  1.002606749534607,
+                  -0.020698541775345802,
+                  -0.019463203847408295,
+                  -0.019463203847408295,
+                  -0.01867987960577011,
+                  -0.01867987960577011,
+                  0,
+                  -0.018281277269124985,
+                  -0.017530038952827454,
+                  -0.03784894570708275,
+                  -0.014453485608100891,
+                  -0.015544876456260681,
+                  -0.01490599662065506,
+                  -0.014293366111814976,
+                  -0.013705904595553875,
+                  -0.012891310267150402,
+                  -0.012891310267150402,
+                  0,
+                  -0.3296714723110199,
+                  0,
+                  0,
+                  0,
+                  -0.421089231967926,
+                  -0.3296714723110199,
+                  0.8292718529701233,
+                  0,
+                  0,
+                  0,
+                  -0.03977359086275101,
+                  -1.6008827686309814,
+                  5.804801940917969,
+                  -0.5133157968521118,
+                  -2.823871612548828,
+                  -2.823871612548828,
+                  2.3105568885803223,
+                  -0.28224658966064453,
+                  -0.28224658966064453,
+                  0,
+                  0,
+                  0,
+                  1.0128390789031982,
+                  1.0128390789031982,
+                  1.0128390789031982,
+                  4.083498954772949,
+                  2.5928022861480713,
+                  2.2335822582244873,
+                  4.390327453613281,
+                  -0.47298251231351046
+                ]
+              ]
+            }
+          }
+        }
+      },
+      "gu": {
+        "settings": {
+          "locale": "gu",
+          "useNoneFeature": false,
+          "trainByDomain": false,
+          "tag": "domain-manager-gu",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {},
+        "intentDict": {},
+        "sentences": [],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "gu",
+              "tag": "nlu-gu",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {},
+            "intents": {},
+            "intentFeatures": {},
+            "featuresToIntent": {},
+            "neuralNetwork": {
+              "settings": {
+                "useNoneFeature": false,
+                "locale": "gu",
+                "tag": "nlu-gu",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "hello"
+      ],
+      [
+        "en",
+        "hi"
+      ],
+      [
+        "en",
+        "yo"
+      ],
+      [
+        "en",
+        "hey"
+      ],
+      [
+        "en",
+        "hey there"
+      ],
+      [
+        "en",
+        "hi there"
+      ],
+      [
+        "en",
+        "what’s up"
+      ],
+      [
+        "en",
+        "hello there"
+      ],
+      [
+        "en",
+        "namaste"
+      ],
+      [
+        "en",
+        "good morning"
+      ],
+      [
+        "en",
+        "good afternoon"
+      ],
+      [
+        "en",
+        "good evening"
+      ],
+      [
+        "en",
+        "hey dude"
+      ],
+      [
+        "en",
+        "hello buddy"
+      ],
+      [
+        "en",
+        "hi bot"
+      ],
+      [
+        "en",
+        "how are you"
+      ],
+      [
+        "en",
+        "how do you feel"
+      ],
+      [
+        "en",
+        "are you okay"
+      ],
+      [
+        "en",
+        "how are things"
+      ],
+      [
+        "en",
+        "everything good?"
+      ],
+      [
+        "en",
+        "you alright?"
+      ],
+      [
+        "en",
+        "you doing fine?"
+      ],
+      [
+        "en",
+        "are things okay with you?"
+      ],
+      [
+        "en",
+        "can you help me"
+      ],
+      [
+        "en",
+        "i need help"
+      ],
+      [
+        "en",
+        "help me"
+      ],
+      [
+        "en",
+        "i have a problem"
+      ],
+      [
+        "en",
+        "assist me"
+      ],
+      [
+        "en",
+        "what can you do"
+      ],
+      [
+        "en",
+        "i need some support"
+      ],
+      [
+        "en",
+        "could you assist me?"
+      ],
+      [
+        "en",
+        "one problem"
+      ],
+      [
+        "en",
+        "can i get some help"
+      ],
+      [
+        "en",
+        "do you know how to help?"
+      ],
+      [
+        "en",
+        "who are you"
+      ],
+      [
+        "en",
+        "what is your name"
+      ],
+      [
+        "en",
+        "are you a bot"
+      ],
+      [
+        "en",
+        "tell me about yourself"
+      ],
+      [
+        "en",
+        "what can you tell me about you"
+      ],
+      [
+        "en",
+        "are you human"
+      ],
+      [
+        "en",
+        "describe yourself"
+      ],
+      [
+        "en",
+        "goodbye"
+      ],
+      [
+        "en",
+        "bye"
+      ],
+      [
+        "en",
+        "see you soon"
+      ],
+      [
+        "en",
+        "take care"
+      ],
+      [
+        "en",
+        "have a good day"
+      ],
+      [
+        "en",
+        "farewell"
+      ],
+      [
+        "en",
+        "peace out"
+      ],
+      [
+        "en",
+        "i’m leaving"
+      ],
+      [
+        "en",
+        "see you tomorrow"
+      ],
+      [
+        "en",
+        "later"
+      ],
+      [
+        "en",
+        "fuck"
+      ],
+      [
+        "en",
+        "fucker"
+      ],
+      [
+        "en",
+        "mother fucker"
+      ],
+      [
+        "en",
+        "assole"
+      ],
+      [
+        "en",
+        "BC"
+      ],
+      [
+        "en",
+        "MC"
+      ],
+      [
+        "en",
+        "BSDK"
+      ],
+      [
+        "en",
+        "I forgot notice"
+      ],
+      [
+        "en",
+        "forgot notice"
+      ],
+      [
+        "en",
+        "can you help to show notice"
+      ],
+      [
+        "en",
+        "I forgot what how to wakeup assistant"
+      ],
+      [
+        "en",
+        "I don’t remember notice"
+      ],
+      [
+        "en",
+        "I can’t remember wakeup words"
+      ],
+      [
+        "en",
+        "help me remember notice"
+      ],
+      [
+        "en",
+        "help me remember wakeup words"
+      ],
+      [
+        "en",
+        "help me to wakeup assistant"
+      ],
+      [
+        "en",
+        "I lost my assistant wakeup word"
+      ],
+      [
+        "en",
+        "can you remind me wakeup words"
+      ],
+      [
+        "en",
+        "I need help remembering"
+      ],
+      [
+        "en",
+        "oops I forgot wakeup words"
+      ],
+      [
+        "en",
+        "I just forgot wakeup words"
+      ],
+      [
+        "en",
+        "how to wake up assistant"
+      ],
+      [
+        "en",
+        "how to add tasks"
+      ],
+      [
+        "en",
+        "not give my pending tasks"
+      ],
+      [
+        "en",
+        "why ninja assistant not work"
+      ],
+      [
+        "en",
+        "assistant not give any response"
+      ],
+      [
+        "en",
+        "what are wake words"
+      ],
+      [
+        "en",
+        "assistant dead"
+      ],
+      [
+        "en",
+        "automatic delete my 3 days old tasks"
+      ],
+      [
+        "en",
+        "why my old tasks are not shown"
+      ],
+      [
+        "en",
+        "where is my old tasks"
+      ],
+      [
+        "en",
+        "my old tasks are missing"
+      ],
+      [
+        "en",
+        "missing some tasks"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "en": {
+        "greetings.hi": [
+          {
+            "answer": "Hi! How can I help you today?"
+          },
+          {
+            "answer": "Hey, what can I do for you?"
+          },
+          {
+            "answer": "Hello! What’s up?"
+          },
+          {
+            "answer": "Hi there, friend!"
+          },
+          {
+            "answer": "Hello! 😊"
+          },
+          {
+            "answer": "Namaste 🙏 How can I assist you?"
+          }
+        ],
+        "user.ask.status": [
+          {
+            "answer": "I'm doing great, thanks for asking!"
+          },
+          {
+            "answer": "All good here! How about you?"
+          },
+          {
+            "answer": "I'm fine and ready to assist you!"
+          }
+        ],
+        "user.ask.help": [
+          {
+            "answer": "Sure! I can help you with your tasks, reminders, and more."
+          },
+          {
+            "answer": "Of course! Let me know what you need."
+          },
+          {
+            "answer": "Yes, I am here to assist. Just ask!"
+          }
+        ],
+        "bot.identity": [
+          {
+            "answer": "I'm your personal assistant bot!"
+          },
+          {
+            "answer": "I'm a smart chatbot designed to help you."
+          },
+          {
+            "answer": "You can call me your bot. I'm here for you!"
+          }
+        ],
+        "greetings.bye": [
+          {
+            "answer": "Bye! Take care."
+          },
+          {
+            "answer": "See you next time!"
+          },
+          {
+            "answer": "Goodbye, friend!"
+          }
+        ],
+        "badword": [
+          {
+            "answer": "Hey hey you are cross limit"
+          }
+        ],
+        "user.ask.forgot": [
+          {
+            "answer": "To gaand marava bhuli gayo BP na code to bahu yaad rey chhe ne"
+          }
+        ],
+        "user.ask.autodelete": [
+          {
+            "answer": "Sayad aapne ye champal dekhi nahi hogi ak gaand pe repta padega na sadak pe hagta firega"
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}

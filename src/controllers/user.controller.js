@@ -8,7 +8,7 @@ import getVoiceUrl from "../services/animevoice.js";
 import { Task } from "../models/task.model.js";
 import { parseDate } from "chrono-node";
 import nlp from "compromise";
-import { wakeupResponses , crudResponses} from "../utills/responses.js";
+import { wakeupResponses, crudResponses, autodeleteResponses } from "../utills/responses.js";
 import { scheduleReminder } from "../services/reminder.js";
 
 
@@ -113,8 +113,8 @@ export const updateprofile = asynchandler(async (req, res) => {
 
     const existuser = await User.findOne({ $or: [{ email }, { username }] })
     if (existuser) {
-        if (existuser.email === email) throw new ApiError(400, 'User already exist with this email')
-        if (existuser.username === username) throw new ApiError(400, 'User already exist with this username')
+        if (existuser.email === email && existuser.id !== userId) throw new ApiError(400, 'User already exist with this email')
+        if (existuser.username === username && existuser.id !== userId) throw new ApiError(400, 'User already exist with this username')
     }
 
     const user = await User.findByIdAndUpdate(userId, { email: email.toLowerCase(), username: username }, { new: true })
@@ -126,7 +126,7 @@ export const updateprofile = asynchandler(async (req, res) => {
 
 // manual part 
 
-export const addTask = asynchandler(async(req,res)=>{
+export const addTask = asynchandler(async (req, res) => {
     const { task } = req.body
     const userId = req.user.id
     if (!task) throw new ApiError(400, 'Plz fill all field')
@@ -134,73 +134,73 @@ export const addTask = asynchandler(async(req,res)=>{
     let humandate
     const time = parseDate(task)
     const newtask = await Task.create({
-        userId:userId,
-        title:task.toLowerCase(),
-        remindAt:time ?? null
+        userId: userId,
+        title: task.toLowerCase(),
+        remindAt: time ?? null
     })
     if (time) {
         humandate = new Date(time).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', hour12: true })
-        scheduleReminder(newtask.id,task,time)
+        scheduleReminder(newtask.id, task, time)
     }
     return res.status(200).json({
-        message:'Task add successfully',
+        message: 'Task add successfully',
         humandate,
         newtask
     })
 })
 
-export const getUserAllTask = asynchandler(async(req,res)=>{
+export const getUserAllTask = asynchandler(async (req, res) => {
     const userId = req.user.id
 
-    const allTasks = await Task.find({userId:userId}).sort({createdAt:-1})
+    const allTasks = await Task.find({ userId: userId }).sort({ createdAt: -1 })
     return res.status(200).json({
-        message:'Fetch all tasks successfully',
+        message: 'Fetch all tasks successfully',
         allTasks
     })
 })
 
-export const getTaskById = asynchandler(async(req,res)=>{
-    const {taskId} = req.params
-    if(!taskId) throw new ApiError(400,'Task id is required field')
+export const getTaskById = asynchandler(async (req, res) => {
+    const { taskId } = req.params
+    if (!taskId) throw new ApiError(400, 'Task id is required field')
 
     const task = await Task.findById(taskId)
-    if(!task) throw new ApiError(404,'Task not found')
+    if (!task) throw new ApiError(404, 'Task not found')
 
     return res.status(200).json({
-        message:'Fetch task successfully',
+        message: 'Fetch task successfully',
         task
     })
 })
 
-export const updateStatus = asynchandler(async(req,res)=>{
-    const {taskId} = req.params
-    if(!taskId) throw new ApiError(400,'Task id must required')
+export const updateStatus = asynchandler(async (req, res) => {
+    const { taskId } = req.params
+    if (!taskId) throw new ApiError(400, 'Task id must required')
 
     const task = await Task.findById(taskId)
-    if(!task) throw new ApiError(404,'Task not found')
+    if (!task) throw new ApiError(404, 'Task not found')
 
     task.completed = true
     task.reminded = true
-    
+
     await task.save()
     return res.status(200).json({
-        message:'Task update successfully',
+        message: 'Task update successfully',
         task
     })
 })
 
-export const deleteTask = asynchandler(async(req,res)=>{
-    const {taskId} = req.params
-    if(!taskId) throw new ApiError(400,'Task id must required') 
+export const deleteTask = asynchandler(async (req, res) => {
+    const { taskId } = req.params
+    if (!taskId) throw new ApiError(400, 'Task id must required')
 
     const task = await Task.findById(taskId)
-    if(!task) throw new ApiError(404,'Task not found')
+    if (!task) throw new ApiError(404, 'Task not found')
 
-    if(task.completed==false) throw new ApiError(400,'Plz first complete a task')
+    if (task.completed == false) throw new ApiError(400, 'Plz first complete a task')
 
-    await Task.deleteMany({_id:task._id})
+    await Task.deleteMany({ _id: task._id })
     return res.status(200).json({
-        message:'Delete tasks successfully'
+        message: 'Delete tasks successfully'
     })
 })
 
@@ -220,11 +220,11 @@ export const wakeUpAssistant = asynchandler(async (req, res) => {
 
 })
 
-export const crudOfTask = asynchandler(async(req,res)=>{
-    const {task,voiceId} = req.body
+export const crudOfTask = asynchandler(async (req, res) => {
+    const { task, voiceId } = req.body
     const userId = req.user.id
 
-    if([task,voiceId].some((field)=>field.trim()==='')) throw new ApiError(400,'Plz fill all field')
+    if ([task, voiceId].some((field) => field.trim() === '')) throw new ApiError(400, 'Plz fill all field')
 
     const index = Math.floor((Math.random() * 2))
     const now = new Date()
@@ -232,92 +232,124 @@ export const crudOfTask = asynchandler(async(req,res)=>{
     const month = now.getMonth()
     const year = now.getFullYear()
 
-    const yesterdayTask = await Task.find({userId:userId,completed:false,createdAt:{$gt: new Date(year,month,date-1),$lte:new Date(year,month,date)}})
-    if(yesterdayTask.length > 0) {
+    const yesterdayTask = await Task.find({ userId: userId, completed: false, createdAt: { $gt: new Date(year, month, date - 1), $lte: new Date(year, month, date) } })
+    if (yesterdayTask.length > 0) {
         const charaterResponse = crudResponses.old[voiceId][index]
-        const voiceBuffer = await getVoiceUrl(charaterResponse,voiceId)
+        const voiceBuffer = await getVoiceUrl(charaterResponse, voiceId)
         return res.status(200).json({
-            message:'Yesterday pending tasks',
+            message: 'Yesterday pending tasks',
             voiceBuffer
         })
         // return res.status(200).setHeader('Content-Type', 'audio/mpeg').send(voiceBuffer);
     }
 
-    function remove(keyword){
+    function remove(keyword) {
         return task.toLowerCase().replace(keyword.toLowerCase(), "")
     }
 
-    if(task.toLowerCase().includes('add task')){
+    if (task.toLowerCase().includes('add task')) {
         let humandate
         const text = remove('add task')
         const doc = nlp(text)
         const verb = doc.verbs().out('text');
         const noun = doc.nouns().first().out('text');
-        const tasktitle = `${verb} ${noun}`.replace(',','and');
+        const tasktitle = `${verb} ${noun}`.replace(',', 'and');
         const time = parseDate(text)
-        const newtask = await Task.create({
-            userId:userId,
-            title:tasktitle.toLowerCase(),
-            remindAt:time ?? null
-        })
+
         const charaterResponse = crudResponses.add[voiceId][index](tasktitle)
-        const voiceBuffer = await getVoiceUrl(charaterResponse,voiceId)
-        if(time){
-            humandate  = new Date(time).toLocaleString('en-IN',{timeZone:'Asia/Kolkata',hour12:true})
-            scheduleReminder(newtask.id,tasktitle,time)
+        const [newtask, voiceBuffer] = await Promise.all([
+            Task.create({
+                userId: userId,
+                title: tasktitle.toLowerCase(),
+                remindAt: time ?? null
+            }),
+            getVoiceUrl(charaterResponse, voiceId)
+        ])
+        if (time) {
+            humandate = new Date(time).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', hour12: true })
+            scheduleReminder(newtask.id, tasktitle, time)
         }
         return res.status(200).json({
-            message:'Add task successfully',
+            message: 'Add task successfully',
             newtask,
-            humandate:time?humandate:null,
+            humandate: time ? humandate : null,
             voiceBuffer
         })
         // return res.status(200).setHeader('Content-Type', 'audio/mpeg').send(voiceBuffer);
     }
-    else if(task.toLowerCase().includes('my pending tasks')){
-        const tasks = await Task.find({userId:userId,completed:false,createdAt:{$gt:new Date(year,month,date),$lte:new Date(year,month,date+1)}})
-        const titles = tasks.map((t)=>t.title)
+    else if (task.toLowerCase().includes('my pending tasks')) {
+        const tasks = await Task.find({ userId: userId, completed: false, createdAt: { $gt: new Date(year, month, date), $lte: new Date(year, month, date + 1) } })
+        const titles = tasks.map((t) => t.title)
         const list = []
-        for(let i=0;i<titles.length;i++){
-            list[i] = `${i+1} is ${titles[i]}`
+        for (let i = 0; i < titles.length; i++) {
+            list[i] = `${i + 1} is ${titles[i]}`
         }
         const charaterResponse = crudResponses.mytasks[voiceId][index](list)
-        const voiceBuffer = await getVoiceUrl(charaterResponse,voiceId)
+        const voiceBuffer = await getVoiceUrl(charaterResponse, voiceId)
         return res.status(200).json({
-            message:'Fetch all current tasks successfully',
+            message: 'Fetch all current tasks successfully',
             list,
             voiceBuffer
         })
         // return res.status(200).setHeader('Content-Type','audio/mpeg').send(voiceBuffer)
     }
-    else if(task.toLowerCase().includes('delete this')){
+    else if (task.toLowerCase().includes('delete this')) {
         const text = remove('delete this').toLowerCase()
-        const oldtask = await Task.findOne({title:{$regex:text.trim(),$options:'i'}})
-        if(!oldtask){
-            const voiceBuffer = await getVoiceUrl(`Oops! i can't find your task.... so speck exact task title.`,voiceId)
+        const oldtask = await Task.findOne({ title: { $regex: text.trim(), $options: 'i' } })
+        if (!oldtask) {
+            const voiceBuffer = await getVoiceUrl(`Oops! i can't find your task.... so speck exact task title.`, voiceId)
             return res.status(400).json({
-                message:'Failed to find task',
+                message: 'Failed to find task',
                 voiceBuffer
             })
             // return res.status(200).setHeader('Content-Type','audio/mpeg').send(voiceBuffer)
         }
-        await Task.deleteOne({_id:oldtask.id})
+        await Task.deleteOne({ _id: oldtask.id })
         const charaterResponse = crudResponses.delete[voiceId][index](oldtask.title)
-        const voiceBuffer = await getVoiceUrl(charaterResponse,voiceId)
+        const voiceBuffer = await getVoiceUrl(charaterResponse, voiceId)
         return res.status(200).json({
-            message:'Delete your task successfully',
-            title:oldtask.title,
+            message: 'Delete your task successfully',
+            title: oldtask.title,
             voiceBuffer
         })
         // return res.status(200).setHeader('Content-Type','audio/mpeg').send(voiceBuffer)
     }
-    else{
+    else {
         const charaterResponse = crudResponses.other[voiceId][index]
-        const voiceBuffer = await getVoiceUrl(charaterResponse,voiceId)
+        const voiceBuffer = await getVoiceUrl(charaterResponse, voiceId)
         return res.status(200).json({
-            message:'Oops! wrong starting word',
+            message: 'Oops! wrong starting word',
             voiceBuffer
         })
         // return res.status(200).setHeader('Content-Type','audio/mpeg').send(voiceBuffer)
     }
+})
+
+export const AutoDelete = asynchandler(async (req, res) => {
+    const userId = req.user.id
+    const now = new Date()
+    const date = now.getDate()
+    const month = now.getMonth()
+    const year = now.getFullYear()
+
+    const oldtasks = await Task.find({ userId: userId, createdAt: { $gte: new Date(year, month, date - 3), $lte: new Date(year, month, date - 1) } }).select('_id')
+
+    if (oldtasks.length > 0) {
+        const voices = ['JBFqnCBsd6RMkjVDRZzb', 'WU3NNr4InTpWBvdLxgpD', 'eVItLK1UvXctxuaRV2Oq', 'WTUK291rZZ9CLPCiFTfh']
+        const Index = Math.floor((Math.random() * voices.length))
+        const index = Math.floor((Math.random() * 2))
+        const voiceId = voices[Index]
+
+        await Task.deleteMany({ _id: { $in: oldtasks } })
+
+        // const charaterResponse = autodeleteResponses[voiceId][index](oldtasks.length)
+        // const voiceBuffer = await getVoiceUrl(charaterResponse,voiceId)
+        return res.status(200).json({
+            message: `Delete your 3 day's old ${oldtasks.length} tasks successfully`,
+            // voiceBuffer
+        })
+    }
+    return res.status(200).json({
+        message: 'Not present olds tasks'
+    })
 })

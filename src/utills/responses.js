@@ -38,6 +38,21 @@ export const wakeupResponses = {
     }
 };
 
+export const autodeleteResponses = {
+    [narutoid]: [
+        (no) => `Hey! I cleaned up ${no} old task${no > 1 ? "s" : ""} for you. Believe it!`,
+        (no) => `Boom! ${no} outdated task${no > 1 ? "s" : ""} vanished like a shadow clone!`
+    ],
+    [hinataid]: [
+        (no) => `Umm... I quietly removed ${no} old task${no > 1 ? "s" : ""} for you.`,
+        (no) => `${no} task${no > 1 ? "s" : ""} were outdated... I cleaned them for you.`
+    ],
+    [jiraiyaid]: [
+        (no) => `Ha! ${no} task${no > 1 ? "s" : ""} disappeared like my money on a hot spring night.`,
+        (no) => `Whew! Cleared out ${no} old task${no > 1 ? "s" : ""}. Gotta stay sharp, kid!`
+    ]
+};
+
 
 export const crudResponses = {
     old: {
