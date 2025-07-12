@@ -406,14 +406,3 @@ export const AutoDelete = asynchandler(async (req, res) => {
         message: 'Not present olds tasks'
     })
 })
-
-
-
-export const getalluser = asynchandler(async(req,res)=>{
-    const users = await User.find({})
-    console.log(users)
-    return res.json({
-        message:'Fetch all users',
-        users
-    })
-})

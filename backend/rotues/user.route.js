@@ -1,12 +1,11 @@
 import { Router } from "express";
-import { addTask, AutoDelete, crudOfTask, deleteTask, getalluser, getTaskById, getUserAllTask, getUserPogress, login, logout, register, updateprofile, updateStatus, updateTask, usergetById, wakeUpAssistant } from "../controllers/user.controller.js";
+import { addTask, AutoDelete, crudOfTask, deleteTask, getTaskById, getUserAllTask, getUserPogress, login, logout, register, updateprofile, updateStatus, updateTask, usergetById, wakeUpAssistant } from "../controllers/user.controller.js";
 import { verifyjwt } from "../middlewares/verifyjwt.js";
 import { botresponce } from "../services/trainbot.js";
 
 
 const userRoute = Router()
 
-userRoute.route('/all').get(getalluser)
 userRoute.route('/register').post(register)
 userRoute.route('/login').post(login)
 userRoute.route('/logout').post(verifyjwt,logout)
